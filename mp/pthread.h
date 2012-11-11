@@ -152,6 +152,10 @@ private:
 	pthread_mutex(const pthread_mutex&);
 };
 
+class pthread_recursive_mutex: public pthread_mutex {
+public:
+  pthread_recursive_mutex(): pthread_mutex(PTHREAD_MUTEX_RECURSIVE_NP) {}
+};
 
 class pthread_rwlock {
 public:
