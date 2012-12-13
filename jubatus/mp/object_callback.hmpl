@@ -18,8 +18,8 @@
 #ifndef MP_OBJECT_CALLBACK_H__
 #define MP_OBJECT_CALLBACK_H__
 
-#include "mp/memory.h"
-#include "mp/object_delete.h"
+#include "jubatus/mp/memory.h"
+#include "jubatus/mp/object_delete.h"
 
 namespace mp {
 

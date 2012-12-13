@@ -18,8 +18,8 @@
 #ifndef WAVY_LOOP_H__
 #define WAVY_LOOP_H__
 
-#include "mp/wavy.h"
-#include "mp/pthread.h"
+#include "jubatus/mp/wavy.h"
+#include "jubatus/mp/pthread.h"
 #include "wavy_kernel.h"
 #include <queue>
 

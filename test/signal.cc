@@ -1,6 +1,6 @@
-#include <mp/wavy.h>
-#include <mp/functional.h>
-#include <mp/signal.h>
+#include <jubatus/mp/wavy.h>
+#include <jubatus/mp/functional.h>
+#include <jubatus/mp/signal.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>

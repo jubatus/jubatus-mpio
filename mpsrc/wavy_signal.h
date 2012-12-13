@@ -20,7 +20,7 @@
 #define WAVY_SIGNAL_H__
 
 #include "wavy_loop.h"
-#include "mp/signal.h"
+#include "jubatus/mp/signal.h"
 #include <signal.h>
 
 namespace mp {

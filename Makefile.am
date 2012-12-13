@@ -1,4 +1,4 @@
-SUBDIRS = mp mpsrc test
+SUBDIRS = jubatus/mp mpsrc test
 
 DOC_FILES = \
 		README.md \

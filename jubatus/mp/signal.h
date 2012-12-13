@@ -18,8 +18,8 @@
 #ifndef MP_SIGNAL_H__
 #define MP_SIGNAL_H__
 
-#include "mp/exception.h"
-#include "mp/pthread.h"
+#include "jubatus/mp/exception.h"
+#include "jubatus/mp/pthread.h"
 #include <signal.h>
 
 namespace mp {

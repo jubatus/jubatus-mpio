@@ -19,8 +19,8 @@
 #define MP_TLS_SET_H__
 #ifdef MP_EXPERIMENTAL
 
-#include "mp/pthread.h"
-#include "mp/sync.h"
+#include "jubatus/mp/pthread.h"
+#include "jubatus/mp/sync.h"
 #include <memory>
 #include <vector>
 

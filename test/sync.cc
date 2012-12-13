@@ -1,5 +1,5 @@
-#include <mp/sync.h>
-#include <mp/pthread.h>
+#include <jubatus/mp/sync.h>
+#include <jubatus/mp/pthread.h>
 #include <vector>
 
 struct test {

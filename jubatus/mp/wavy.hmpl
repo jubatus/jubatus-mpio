@@ -18,10 +18,10 @@
 #ifndef MP_WAVY_H__
 #define MP_WAVY_H__
 
-#include "mp/functional.h"
-#include "mp/memory.h"
-#include "mp/pthread.h"
-#include "mp/object_delete.h"
+#include "jubatus/mp/functional.h"
+#include "jubatus/mp/memory.h"
+#include "jubatus/mp/pthread.h"
+#include "jubatus/mp/object_delete.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/uio.h>

@@ -18,7 +18,7 @@
 #ifndef MP_SYNC_H__
 #define MP_SYNC_H__
 
-#include "mp/pthread.h"
+#include "jubatus/mp/pthread.h"
 
 namespace mp {
 

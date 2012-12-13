@@ -1,5 +1,5 @@
-#include <mp/wavy.h>
-#include <mp/functional.h>
+#include <jubatus/mp/wavy.h>
+#include <jubatus/mp/functional.h>
 #include <arpa/inet.h>
 
 using namespace mp::placeholders;

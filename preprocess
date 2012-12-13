@@ -19,8 +19,8 @@ function preprocess() {
 	fi
 }
 
-preprocess mp/object_callback.hmpl
-preprocess mp/sparse_array.hmpl
-preprocess mp/sync.hmpl
-preprocess mp/wavy.hmpl
+preprocess jubatus/mp/object_callback.hmpl
+preprocess jubatus/mp/sparse_array.hmpl
+preprocess jubatus/mp/sync.hmpl
+preprocess jubatus/mp/wavy.hmpl
 

@@ -18,8 +18,8 @@
 #ifndef MP_PTHREAD_H__
 #define MP_PTHREAD_H__
 
-#include "mp/exception.h"
-#include "mp/functional.h"
+#include "jubatus/mp/exception.h"
+#include "jubatus/mp/functional.h"
 #include <pthread.h>
 #include <memory>
 

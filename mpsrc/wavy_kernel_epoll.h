@@ -18,7 +18,7 @@
 #ifndef MP_WAVY_KERNEL_EPOLL_H__
 #define MP_WAVY_KERNEL_EPOLL_H__
 
-#include "mp/exception.h"
+#include "jubatus/mp/exception.h"
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
