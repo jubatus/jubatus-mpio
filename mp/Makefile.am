@@ -1,7 +1,7 @@
 
-libmpio_includedir = $(includedir)/mp
+libjubatus_mpio_includedir = $(includedir)/jubatus/mp
 
-libmpio_include_HEADERS = \
+libjubatus_mpio_include_HEADERS = \
 		endian.h \
 		exception.h \
 		functional.h \

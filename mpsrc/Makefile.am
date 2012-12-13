@@ -1,9 +1,9 @@
 
-lib_LTLIBRARIES = libmpio.la
+lib_LTLIBRARIES = libjubatus_mpio.la
 
-libmpio_la_CPPFLAGS = -I..
+libjubatus_mpio_la_CPPFLAGS = -I..
 
-libmpio_la_SOURCES = \
+libjubatus_mpio_la_SOURCES = \
 		wavy_connect.cc \
 		wavy_listen.cc \
 		wavy_loop.cc \
