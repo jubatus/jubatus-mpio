@@ -154,7 +154,7 @@ private:
 
 class pthread_recursive_mutex: public pthread_mutex {
 public:
-  pthread_recursive_mutex(): pthread_mutex(PTHREAD_MUTEX_RECURSIVE_NP) {}
+  pthread_recursive_mutex(): pthread_mutex(PTHREAD_MUTEX_RECURSIVE) {}
 };
 
 class pthread_rwlock {
