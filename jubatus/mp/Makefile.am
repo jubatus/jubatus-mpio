@@ -1,3 +1,4 @@
+# Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 
 libjubatus_mpio_includedir = $(includedir)/jubatus/mp
 
