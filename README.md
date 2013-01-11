@@ -1,5 +1,5 @@
-mpio
-====
+jubatus-mpio
+============
 Multipurpose concurrent I/O framework for C++
 
 
