@@ -2,6 +2,7 @@
 // mpio signal
 //
 // Copyright (C) 2008-2010 FURUHASHI Sadayuki
+// Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -18,8 +19,8 @@
 #ifndef MP_SIGNAL_H__
 #define MP_SIGNAL_H__
 
-#include "mp/exception.h"
-#include "mp/pthread.h"
+#include "jubatus/mp/exception.h"
+#include "jubatus/mp/pthread.h"
 #include <signal.h>
 
 namespace mp {

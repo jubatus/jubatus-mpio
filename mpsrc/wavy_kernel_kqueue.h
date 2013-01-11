@@ -2,6 +2,7 @@
 // mpio wavy kernel kqueue
 //
 // Copyright (C) 2008-2010 FURUHASHI Sadayuki
+// Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -18,7 +19,7 @@
 #ifndef MP_WAVY_KERNEL_KQUEUE_H__
 #define MP_WAVY_KERNEL_KQUEUE_H__
 
-#include "mp/exception.h"
+#include "jubatus/mp/exception.h"
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>

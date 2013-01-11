@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
+
 RUBY="ruby"
 
 function r() {
@@ -10,7 +12,7 @@ function r() {
 function preprocess() {
 	file="$1"
 	out="$(dirname "$file")/$(basename "$file" mpl)"
-	r "$RUBY" mplex -rmpl "$file" -o "$out"
+	r "$RUBY" -I. mplex -rmpl "$file" -o "$out"
 	if [ "$?" != 0 ]; then
 		echo ""
 		echo "** preprocess failed **"
@@ -19,8 +21,8 @@ function preprocess() {
 	fi
 }
 
-preprocess mp/object_callback.hmpl
-preprocess mp/sparse_array.hmpl
-preprocess mp/sync.hmpl
-preprocess mp/wavy.hmpl
+preprocess jubatus/mp/object_callback.hmpl
+preprocess jubatus/mp/sparse_array.hmpl
+preprocess jubatus/mp/sync.hmpl
+preprocess jubatus/mp/wavy.hmpl
 

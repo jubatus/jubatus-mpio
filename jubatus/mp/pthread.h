@@ -2,6 +2,7 @@
 // mpio pthread
 //
 // Copyright (C) 2008-2010 FURUHASHI Sadayuki
+// Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -18,8 +19,8 @@
 #ifndef MP_PTHREAD_H__
 #define MP_PTHREAD_H__
 
-#include "mp/exception.h"
-#include "mp/functional.h"
+#include "jubatus/mp/exception.h"
+#include "jubatus/mp/functional.h"
 #include <pthread.h>
 #include <memory>
 
@@ -152,6 +153,10 @@ private:
 	pthread_mutex(const pthread_mutex&);
 };
 
+class pthread_recursive_mutex: public pthread_mutex {
+public:
+  pthread_recursive_mutex(): pthread_mutex(PTHREAD_MUTEX_RECURSIVE) {}
+};
 
 class pthread_rwlock {
 public:

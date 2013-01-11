@@ -1,7 +1,8 @@
+# Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 
 AM_CPPFLAGS   = -I..
 AM_C_CPPFLAGS = -I..
-AM_LDFLAGS = ../mpsrc/libmpio.la
+AM_LDFLAGS = ../mpsrc/libjubatus_mpio.la
 
 check_PROGRAMS = \
 		listen_connect \

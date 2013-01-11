@@ -1,9 +1,11 @@
+# Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 
-lib_LTLIBRARIES = libmpio.la
+lib_LTLIBRARIES = libjubatus_mpio.la
 
-libmpio_la_CPPFLAGS = -I..
+libjubatus_mpio_la_LDFLAGS = -version-info 4:0:4
+libjubatus_mpio_la_CPPFLAGS = -I..
 
-libmpio_la_SOURCES = \
+libjubatus_mpio_la_SOURCES = \
 		wavy_connect.cc \
 		wavy_listen.cc \
 		wavy_loop.cc \

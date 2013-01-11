@@ -1,6 +1,8 @@
-#include <mp/wavy.h>
-#include <mp/functional.h>
-#include <mp/signal.h>
+// Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
+
+#include <jubatus/mp/wavy.h>
+#include <jubatus/mp/functional.h>
+#include <jubatus/mp/signal.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
