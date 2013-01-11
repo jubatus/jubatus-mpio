@@ -61,6 +61,7 @@ Wavy is a multithreaded event-driven I/O library.
 ## License
 
     Copyright (C) 2008-2010 FURUHASHI Sadayuki
+    Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
     
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.

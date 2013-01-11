@@ -1,3 +1,10 @@
+2013-01-11 version 0.4.0:
+
+  * Forked from mpio.
+  * Renamed directory mp -> jubatus/mp
+  * Renamed libmpio -> libjubatus_mpio.
+  * Added ruby "-I." option to preprocess
+  * Added pthread_recursive_mutex
 
 2011-04-22 version 0.3.7:
 
