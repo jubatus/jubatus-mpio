@@ -1,4 +1,6 @@
-Current development
+2013-02-15 version 0.4.1:
+
+  * Fix header macro for clang
   * Fix configure.in for clang with -O4 option
   * Update autoconf script for distribution, exclude mplex sources
 
