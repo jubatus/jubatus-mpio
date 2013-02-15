@@ -2,14 +2,8 @@
 
 SUBDIRS = jubatus/mp mpsrc test
 
-DOC_FILES = \
+EXTRA_DIST = \
 		README.md \
 		LICENSE \
 		NOTICE
-
-EXTRA_DIST = \
-		$(DOC_FILES) \
-		mplex \
-		mpl.rb \
-		preprocess
 

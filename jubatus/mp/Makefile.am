@@ -29,5 +29,3 @@ PREP_SOURCE = \
 		sync.hmpl \
 		wavy.hmpl
 
-EXTRA_DIST = $(PREP_SOURCE)
-
