@@ -9,6 +9,7 @@ check_PROGRAMS = \
 		handler \
 		signal \
 		timer \
+		many_timer \
 		sync
 
 TESTS = $(check_PROGRAMS)
@@ -20,6 +21,8 @@ handler_SOURCES = handler.cc
 signal_SOURCES = signal.cc
 
 timer_SOURCES = timer.cc
+
+many_timer_SOURCES = many_timer.cc
 
 sync_SOURCES = sync.cc
 
