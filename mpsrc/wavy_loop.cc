@@ -211,25 +211,6 @@ void loop_impl::thread_main()
 			goto process_handler;
 		}
 
-#if 0
-		if(!m_pollable) {
-			if(m_out->has_queue()) {
-				do_out(lk);
-				goto retry;
-			} else if(!m_task_queue.empty()) {
-				do_task(lk);
-				goto retry;
-			} else {
-				m_cond.wait(m_mutex);
-				goto retry_task;
-			}
-		} else if(m_task_queue.size() > MP_WAVY_TASK_QUEUE_LIMIT) {
-			do_task(lk);
-			goto retry;
-		}
-#endif
-
-#if 1
 		if(m_out->has_queue()) {
 			do_out(lk);
 			goto retry;
@@ -246,7 +227,6 @@ void loop_impl::thread_main()
 			do_task(lk);
 			goto retry;
 		}
-#endif
 
 		if(m_num == m_off) {
 			m_pollable = false;
