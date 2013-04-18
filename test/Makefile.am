@@ -11,7 +11,7 @@ check_PROGRAMS = \
 		timer \
 		many_timer \
 		sync \
-                huge_message
+		huge_message
 
 TESTS = $(check_PROGRAMS)
 

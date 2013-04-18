@@ -36,7 +36,7 @@ public:
 
 		std::auto_ptr<buffer_t> buf( new buffer_t(total_write_size) );
 		loop_->write(fd(), &((*buf)[0]), buf->size(), buf);
-		std::cerr << "wrote " << total_write_size << "bytes" 
+		std::cerr << "wrote " << total_write_size << "bytes"
 			  << std::endl;
 	}
 	static void accepted(mp::wavy::loop *lo, int fd, int err) {
@@ -73,7 +73,7 @@ public:
 
 		if ( read_size <= 0 ) {
 			std::cerr << std::endl
-				 << "session closed with " << read_size 
+				 << "session closed with " << read_size
 				 << std::endl;
 
 			ev.remove();
@@ -98,17 +98,16 @@ public:
 		}
 
 		try {
-			std::cerr << "conencted" << std::endl;
-			
+			std::cerr << "connected" << std::endl;
+
 			buffer_t buf(32);
 			if ( ::write(fd, &buf[0], buf.size()) < 0 ) {
 				perror("write error");
 				exit(1);
 			}
-				
 
 			lo->add_handler<client_handler>(fd, lo);
-			lo->add_timer( 10.0, 0.0, 
+			lo->add_timer( 10.0, 0.0,
 					mp::bind( &client_handler::on_timed_out,
 							lo));
 		} catch(...) {
@@ -149,19 +148,19 @@ int main(int argc, char **argv)
 
 	lo_server.listen(PF_INET, SOCK_STREAM, 0,
 			(struct sockaddr*)&addr, sizeof(addr),
-			mp::bind(&server_handler::accepted, 
+			mp::bind(&server_handler::accepted,
 					&lo_server, _1, _2));
 
 	lo_server.start(1);  // run with 1 threads
-	
+
 	mp::wavy::loop lo_client;
-	lo_client.start(2);  // run with 1 threads
+	lo_client.start(2);  // run with 2 threads
 
 	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	lo_client.connect(PF_INET, SOCK_STREAM, 0,
 			(struct sockaddr*)&addr, sizeof(addr),
-			0.0, 
-			mp::bind(&client_handler::connected, 
+			0.0,
+			mp::bind(&client_handler::connected,
 					&lo_client, _1, _2));
 
 	lo_client.join();
