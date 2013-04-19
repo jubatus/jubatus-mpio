@@ -1,3 +1,8 @@
+2013-04-19 version 0.4.2:
+
+  * Fix fd leak when timerfd is disabled on Linux
+  * Fix event-loop dead-lock on single-large-async write
+
 2013-02-15 version 0.4.1:
 
   * Fix header macro for clang
