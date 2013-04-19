@@ -176,11 +176,14 @@ public:
 #else // DISABLE_TIMERFD
 	class timer {
 	public:
-		timer() : fd(-1) { }
+		timer() : fd(-1), fd_writer(-1) { }
 		~timer() {
 			if(fd >= 0) {
 				timer_delete(timer_id);
 				::close(fd);
+			}
+			if(fd_writer >= 0) {
+				::close(fd_writer);
 			}
 		}
 
@@ -188,6 +191,7 @@ public:
 
 	private:
 		int fd;
+		int fd_writer;
 		timer_t timer_id;
 		friend class kernel;
 		timer(const timer&);
@@ -259,6 +263,7 @@ public:
 		}
 
 		tm->fd = pipefd[0];
+		tm->fd_writer = pipefd[1];
 		tm->timer_id = timer_id;
 
 		return pipefd[0];

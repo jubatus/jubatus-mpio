@@ -9,7 +9,9 @@ check_PROGRAMS = \
 		handler \
 		signal \
 		timer \
-		sync
+		many_timer \
+		sync \
+		huge_message
 
 TESTS = $(check_PROGRAMS)
 
@@ -21,5 +23,8 @@ signal_SOURCES = signal.cc
 
 timer_SOURCES = timer.cc
 
+many_timer_SOURCES = many_timer.cc
+
 sync_SOURCES = sync.cc
 
+huge_message_SOURCES = huge_message.cc

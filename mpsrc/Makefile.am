@@ -2,7 +2,7 @@
 
 lib_LTLIBRARIES = libjubatus_mpio.la
 
-libjubatus_mpio_la_LDFLAGS = -version-info 4:1:4
+libjubatus_mpio_la_LDFLAGS = -version-info 4:2:4
 libjubatus_mpio_la_CPPFLAGS = -I..
 
 libjubatus_mpio_la_SOURCES = \
