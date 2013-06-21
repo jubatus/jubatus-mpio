@@ -34,7 +34,7 @@ class out;
 
 class loop_impl {
 public:
-	loop_impl(function<void ()> thread_init_func = function<void ()>());
+	explicit loop_impl(function<void ()> thread_init_func = function<void ()>());
 	~loop_impl();
 
 	typedef shared_ptr<basic_handler> shared_handler;
