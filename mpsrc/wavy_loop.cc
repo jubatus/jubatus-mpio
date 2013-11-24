@@ -115,13 +115,28 @@ void loop_impl::start(size_t num)
 	add_thread(num);
 }
 
+class thread_main_binder {
+public:
+	explicit thread_main_binder(loop_impl* p) :
+		m_p(p)
+	{ }
+
+	void operator()()
+	{
+		m_p->thread_main();
+	}
+
+private:
+	loop_impl* m_p;
+};
+
 void loop_impl::add_thread(size_t num)
 {
 	for(size_t i=0; i < num; ++i) {
 		m_workers.push_back( pthread_thread() );
 		try {
 			m_workers.back().run(
-					bind(&loop_impl::thread_main, this));
+					thread_main_binder(this));
 		} catch (...) {
 			m_workers.pop_back();
 			throw;

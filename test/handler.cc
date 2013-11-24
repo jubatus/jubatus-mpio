@@ -2,14 +2,11 @@
 
 #include <jubatus/mp/wavy.h>
 #include <jubatus/mp/signal.h>
-#include <jubatus/mp/functional.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <iostream>
-
-using namespace mp::placeholders;
 
 class handler : public mp::wavy::handler {
 public:
@@ -58,6 +55,25 @@ void my_function()
 	std::cout << "ok" << std::endl;
 }
 
+namespace {
+class timer_handler_binder {
+public:
+	timer_handler_binder(int* count, mp::wavy::loop* lo) :
+		m_count(count),
+		m_lo(lo)
+	{ }
+
+	bool operator()()
+	{
+		return timer_handler(m_count, m_lo);
+	}
+
+private:
+	int* m_count;
+	mp::wavy::loop* m_lo;
+};
+}
+
 void reader_main(int rpipe)
 {
 	mp::wavy::loop lo;
@@ -65,8 +81,7 @@ void reader_main(int rpipe)
 	lo.add_handler<handler>(rpipe, &lo);
 
 	int count = 0;
-	lo.add_timer(0.1, 0.1, mp::bind(
-				&timer_handler, &count, &lo));
+	lo.add_timer(0.1, 0.1, timer_handler_binder(&count, &lo));
 
 	lo.submit(&my_function);
 
