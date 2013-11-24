@@ -50,8 +50,20 @@ class VarlenGenerator
 		each_join {|i| "&#{i}*" }
 	end
 
+	def ctor_initializer
+		each_join {|i| "a#{i}(a#{i})" }
+	end
+
+	def members
+		each_join_semicolon {|i| "A#{i} a#{i}" }
+	end
+
 	def each_join(&block)
 		Array.new(@n) {|i| block.call(i+1) }.join(', ')
+	end
+
+	def each_join_semicolon(&block)
+		Array.new(@n) {|i| block.call(i+1) }.join('; ')
 	end
 
 	def each(&block)
@@ -65,6 +77,8 @@ class VarlenGenerator
 			@n += 1
 		}
 	end
+
+	attr_reader :n
 end
 
 def varlen_each(&block)
