@@ -130,11 +130,30 @@ class pthread_signal : public pthread_thread {
 public:
 	typedef function<bool ()> handler_t;
 
+private:
+	class thread_main_binder {
+	public:
+		thread_main_binder(int signo, handler_t handler) :
+			m_signo(signo),
+			m_handler(handler)
+		{ }
+
+		void operator()()
+		{
+			pthread_signal::thread_main(m_signo, m_handler);
+		}
+
+	private:
+		int m_signo;
+		handler_t m_handler;
+	};
+
+public:
 	pthread_signal(int signo, handler_t handler) :
 		m_signal(signo, SIG_IGN),
 		m_sigmask(sigset().add(signo))
 	{
-		run(mp::bind(&pthread_signal::thread_main, signo, handler));
+		run(thread_main_binder(signo, handler));
 	}
 
 	~pthread_signal() { }
