@@ -18,12 +18,14 @@
 #ifndef MP_FUNCTIONAL_H__
 #define MP_FUNCTIONAL_H__
 
-#include <functional>
-
 #ifdef MP_FUNCTIONAL_BOOST
 #include <boost/tr1/functional.hpp>
 namespace mp {
 	using std::tr1::function;
+	using std::tr1::bind;
+	namespace placeholders {
+		using namespace std::tr1::placeholders;
+	}
 }
 #else
 #ifdef MP_FUNCTIONAL_BOOST_ORG
@@ -31,16 +33,27 @@ namespace mp {
 #include <boost/bind.hpp>
 namespace mp {
 	using boost::function;
+	using boost::bind;
+	namespace placeholders { }
 }
 #else
-#if !defined(MP_FUNCTIONAL_STANDARD) && defined(__GLIBCXX__)
+#ifndef MP_FUNCTIONAL_STANDARD
 #include <tr1/functional>
 namespace mp {
 	using std::tr1::function;
+	using std::tr1::bind;
+	namespace placeholders {
+		using namespace std::tr1::placeholders;
+	}
 }
 #else
+#include <functional>
 namespace mp {
 	using std::function;
+	using std::bind;
+	namespace placeholders {
+		using namespace std::placeholders;
+	}
 }
 #endif
 #endif

@@ -1,7 +1,10 @@
 // Copyright (C) 2013 Preferred Infrastructure and Nippon Telegraph and Telephone Corporation.
 
 #include <jubatus/mp/wavy.h>
+#include <jubatus/mp/functional.h>
 #include <arpa/inet.h>
+
+using namespace mp::placeholders;
 
 void accepted(int fd, int err)
 {
@@ -52,7 +55,7 @@ int main(void)
 
 	lo.listen(PF_INET, SOCK_STREAM, 0,
 			(struct sockaddr*)&addr, sizeof(addr),
-			&accepted);
+			mp::bind(&accepted, _1, _2));
 
 	lo.start(4);  // run with 4 threads
 

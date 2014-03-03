@@ -335,41 +335,13 @@ shared_ptr<Handler> loop::add_handler([%gen.args%])
 			shared_ptr<Handler>(new Handler([%gen.params%]))) ); }
 %end
 
-namespace detail {
-%varlen_each do |gen|
-template <typename F, [%gen.template%]>
-class binder[%gen.n%] {
-public:
-	binder[%gen.n%](F f, [%gen.args_const_ref%]) :
-		f(f), [%gen.ctor_initializer%]
-	{ }
-
-	void operator()() {
-		f([%gen.params%]);
-	}
-
-private:
-	F f;
-	[%gen.members%];
-};
-%end
-
-%varlen_each do |gen|
-template <typename F, [%gen.template%]>
-binder[%gen.n%]<F, [%gen.types%]> bind(F f, [%gen.args_const_ref%])
-{
-    return binder[%gen.n%]<F, [%gen.types%]>(f, [%gen.params%]);
-}
-%end
-} // namespace detail
-
 template <typename F>
 inline void loop::submit(F f)
 	{ submit_impl(task_t(f)); }
 %varlen_each do |gen|
 template <typename F, [%gen.template%]>
 inline void loop::submit(F f, [%gen.args%])
-	{ submit_impl(detail::bind(f, [%gen.params%])); }
+	{ submit_impl(bind(f, [%gen.params%])); }
 %end
 
 

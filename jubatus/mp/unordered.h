@@ -19,8 +19,6 @@
 #ifndef MP_UNORDERED_H__
 #define MP_UNORDERED_H__
 
-#include <functional>
-
 #if   defined(MP_UNORDERED_MAP_BOOST)
 #include <boost/tr1/unordered_map.hpp>
 #include <boost/tr1/unordered_set.hpp>
@@ -46,7 +44,7 @@ namespace mp {
 	template <typename T> struct hash : public boost::hash<T> { };
 }
 
-#elif defined(MP_UNORDERED_MAP_STANDARD) || !defined(__GLIBCXX__)
+#elif defined(MP_UNORDERED_MAP_STANDARD)
 #include <unordered_map>
 #include <unordered_set>
 namespace mp {

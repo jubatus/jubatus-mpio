@@ -6,9 +6,12 @@
 #include <stdexcept>
 
 #include <jubatus/mp/wavy.h>
+#include <jubatus/mp/functional.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+using namespace mp::placeholders;
 
 size_t total_write_size = 1024*1024*128; // KByte
 
@@ -57,21 +60,6 @@ private:
 };
 
 class client_handler: public mp::wavy::handler {
-	class on_timed_out_binder {
-	public:
-		explicit on_timed_out_binder(mp::wavy::loop* lo) :
-			m_lo(lo)
-		{ }
-
-		bool operator()()
-		{
-			return on_timed_out(m_lo);
-		}
-
-	private:
-		mp::wavy::loop* m_lo;
-	};
-
 public:
 	client_handler(int fd, mp::wavy::loop *lo) :
 		mp::wavy::handler(fd),
@@ -120,7 +108,8 @@ public:
 
 			lo->add_handler<client_handler>(fd, lo);
 			lo->add_timer( 10.0, 0.0,
-					on_timed_out_binder(lo));
+					mp::bind( &client_handler::on_timed_out,
+							lo));
 		} catch(...) {
 			::close(fd);
 			throw;
@@ -139,37 +128,6 @@ private:
 	std::vector<char> buf_;
 	size_t total_size_;
 };
-
-namespace {
-class accepted_binder {
-public:
-	explicit accepted_binder(mp::wavy::loop* lo_server) :
-		m_lo_server(lo_server)
-	{ }
-
-	void operator()(int fd, int err) {
-		server_handler::accepted(m_lo_server, fd, err);
-	}
-
-private:
-	mp::wavy::loop* m_lo_server;
-};
-
-class connected_binder {
-public:
-	explicit connected_binder(mp::wavy::loop* lo_client) :
-		m_lo_client(lo_client)
-	{ }
-
-	void operator()(int fd, int err)
-	{
-		client_handler::connected(m_lo_client, fd, err);
-	}
-
-private:
-	mp::wavy::loop* m_lo_client;
-};
-}
 
 int main(int argc, char **argv)
 {
@@ -190,7 +148,8 @@ int main(int argc, char **argv)
 
 	lo_server.listen(PF_INET, SOCK_STREAM, 0,
 			(struct sockaddr*)&addr, sizeof(addr),
-			accepted_binder(&lo_server));
+			mp::bind(&server_handler::accepted,
+					&lo_server, _1, _2));
 
 	lo_server.start(1);  // run with 1 threads
 
@@ -201,7 +160,8 @@ int main(int argc, char **argv)
 	lo_client.connect(PF_INET, SOCK_STREAM, 0,
 			(struct sockaddr*)&addr, sizeof(addr),
 			0.0,
-			connected_binder(&lo_client));
+			mp::bind(&client_handler::connected,
+					&lo_client, _1, _2));
 
 	lo_client.join();
 	lo_server.end();

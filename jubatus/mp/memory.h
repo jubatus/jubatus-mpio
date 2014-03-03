@@ -18,8 +18,6 @@
 #ifndef MP_MEMORY_H__
 #define MP_MEMORY_H__
 
-#include <memory>
-
 #ifdef MP_MEMORY_BOOST
 #include <boost/tr1/memory>
 namespace mp {
@@ -45,7 +43,7 @@ namespace mp {
 	using boost::enable_shared_from_this;
 }
 #else
-#if !defined(MP_MEMORY_STANDARD) && defined(__GLIBCXX__)
+#ifndef MP_MEMORY_STANDARD
 #include <tr1/memory>
 namespace mp {
 	using std::tr1::shared_ptr;
@@ -56,6 +54,7 @@ namespace mp {
 	using std::tr1::enable_shared_from_this;
 }
 #else
+#include <memory>
 namespace mp {
 	using std::shared_ptr;
 	using std::weak_ptr;
