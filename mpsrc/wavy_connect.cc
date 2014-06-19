@@ -332,8 +332,8 @@ void loop::connect(
 		double timeout_sec, connect_callback_t callback)
 {
 	struct timespec timeout = {
-		timeout_sec,
-		((timeout_sec - (double)(time_t)timeout_sec) * 1e9) };
+		static_cast<time_t>(timeout_sec),
+		static_cast<time_t>(((timeout_sec - (double)(time_t)timeout_sec) * 1e9)) };
 	return connect(socket_family, socket_type, protocol,
 			addr, addrlen, &timeout, callback);
 }

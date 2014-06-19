@@ -19,6 +19,7 @@
 #define MP_EXCEPTION_H__
 
 #include <stdexcept>
+#include <string>
 #include <errno.h>
 #include <string.h>
 #include <stdio.h>
