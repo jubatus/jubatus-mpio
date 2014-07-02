@@ -37,7 +37,7 @@ static inline struct timespec sec2spec(double sec)
 {
 	struct timespec spec = {
 		static_cast<time_t>(sec),
-		static_cast<time_t>((sec - (double)(time_t)sec) * 1e9) };
+		static_cast<long>((sec - (double)(long)sec) * 1e9) };
 	return spec;
 }
 
