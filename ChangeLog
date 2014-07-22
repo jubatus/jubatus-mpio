@@ -1,3 +1,10 @@
+2013-07-22 version 0.4.3:
+
+  * Add -pthread option
+  * Stop using -O4 option
+  * Support for OS X Mavericks
+  * Port to libc++
+
 2013-04-19 version 0.4.2:
 
   * Fix fd leak when timerfd is disabled on Linux
