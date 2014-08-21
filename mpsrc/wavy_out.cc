@@ -518,6 +518,14 @@ void out::write(int fd, const void* buf, size_t size)
 	}
 }
 
+void out::clear_xfer(int fd)
+{
+	xfer_impl& ctx(ANON_fdctx[fd]);
+	pthread_scoped_lock lk(ctx.mutex());
+
+	ctx.clear();
+}
+
 
 #define ANON_out static_cast<loop_impl*>(m_impl)->m_out
 

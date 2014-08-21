@@ -157,6 +157,7 @@ shared_ptr<basic_handler> loop_impl::add_handler_impl(shared_ptr<basic_handler> 
 
 void loop_impl::remove_handler(int fd)
 {
+	m_out->clear_xfer(fd);
 	reset_handler(fd);
 	m_kernel.remove_fd(fd, EVKERNEL_READ);
 }

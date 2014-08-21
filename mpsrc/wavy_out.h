@@ -43,6 +43,8 @@ public:
 	inline void commit(int fd, xfer* xf);
 	inline void write(int fd, const void* buf, size_t size);
 
+	inline void clear_xfer(int fd);
+
 public:
 	kernel& get_kernel()
 	{
