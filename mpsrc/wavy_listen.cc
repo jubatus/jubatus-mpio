@@ -44,7 +44,7 @@ public:
 			int sock = ::accept(fd(), NULL, NULL);
 			if(sock < 0) {
 				err = errno;
-				if(err == EAGAIN || err == EINTR) {
+				if(err == EAGAIN || err == EWOULDBLOCK || err == EINTR) {
 					return;
 				}
 
