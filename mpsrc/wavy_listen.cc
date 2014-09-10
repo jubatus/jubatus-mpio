@@ -50,6 +50,7 @@ public:
 
 				m_callback(sock, err);
 
+				::sleep(1);
 				return;
 			}
 
