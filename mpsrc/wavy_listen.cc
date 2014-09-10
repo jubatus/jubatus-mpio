@@ -50,7 +50,7 @@ public:
 
 				m_callback(sock, err);
 
-				throw system_error(err, "accept failed");
+				return;
 			}
 
 			try {
