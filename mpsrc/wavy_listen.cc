@@ -43,14 +43,15 @@ public:
 			int err = 0;
 			int sock = ::accept(fd(), NULL, NULL);
 			if(sock < 0) {
-				if(errno == EAGAIN || errno == EINTR) {
+				err = errno;
+				if(err == EAGAIN || err == EWOULDBLOCK || err == EINTR) {
 					return;
 				}
-				err = errno;
 
 				m_callback(sock, err);
 
-				throw system_error(errno, "accept failed");
+				::sleep(1);
+				return;
 			}
 
 			try {
