@@ -1,4 +1,15 @@
-2013-04-19 version 0.4.2:
+2014-09-29 version 0.4.4:
+
+  * Fix behavior when ::accept is failed
+
+2014-07-22 version 0.4.3:
+
+  * Add -pthread option
+  * Stop using -O4 option
+  * Support for OS X Mavericks
+  * Port to libc++
+
+2014-04-19 version 0.4.2:
 
   * Fix fd leak when timerfd is disabled on Linux
   * Fix event-loop dead-lock on single-large-async write
