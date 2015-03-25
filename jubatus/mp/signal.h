@@ -28,7 +28,7 @@ namespace mp {
 
 class sigset {
 public:
-	sigset(const sigset_t& set) :
+	explicit sigset(const sigset_t& set) :
 		m_set(set) { }
 
 	sigset()
@@ -63,14 +63,14 @@ private:
 
 class scoped_sigprocmask {
 public:
-	scoped_sigprocmask(const sigset& set) : m_set(set)
+	explicit scoped_sigprocmask(const sigset& set) : m_set(set)
 	{
 		if(sigprocmask(SIG_BLOCK, m_set.get(), NULL) < 0) {
 			throw system_error(errno, "failed to set sigprocmask");
 		}
 	}
 
-	scoped_sigprocmask(const sigset_t& set) : m_set(set)
+	explicit scoped_sigprocmask(const sigset_t& set) : m_set(set)
 	{
 		if(sigprocmask(SIG_BLOCK, m_set.get(), NULL) < 0) {
 			throw system_error(errno, "failed to set sigprocmask");

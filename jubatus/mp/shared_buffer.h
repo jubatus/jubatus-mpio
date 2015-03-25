@@ -52,14 +52,14 @@ namespace mp {
 
 class shared_buffer {
 public:
-	shared_buffer(size_t init_size = MP_SHARED_BUFFER_INITIAL_BUFFER_SIZE);
+	explicit shared_buffer(size_t init_size = MP_SHARED_BUFFER_INITIAL_BUFFER_SIZE);
 	~shared_buffer();
 
 public:
 	class ref {
 	public:
 		ref();
-		ref(const ref& o);
+		explicit ref(const ref& o);
 		~ref();
 		void clear();
 		void swap(ref& x);

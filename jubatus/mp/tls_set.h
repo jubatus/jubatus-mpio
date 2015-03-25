@@ -32,7 +32,7 @@ class pthread_scoped_lock_multi {
 public:
 	pthread_scoped_lock_multi() : m_vec(NULL) { }
 
-	pthread_scoped_lock_multi(size_t size) :
+	explicit pthread_scoped_lock_multi(size_t size) :
 		m_vec(new pthread_scoped_lock[size]) { }
 
 	~pthread_scoped_lock_multi() { delete[] m_vec; }
@@ -162,7 +162,7 @@ public:
 
 private:
 	struct element {
-		element(const T& data) : data(data) { }
+		explicit element(const T& data) : data(data) { }
 		~element() { }
 		T data;
 		pthread_mutex mutex;

@@ -104,12 +104,12 @@ struct pthread_thread_impl : public pthread_thread {
 
 class pthread_mutex {
 public:
-	pthread_mutex(const pthread_mutexattr_t *attr = NULL)
+	explicit pthread_mutex(const pthread_mutexattr_t *attr = NULL)
 	{
 		pthread_mutex_init(&m_mutex, attr);
 	}
 
-	pthread_mutex(int kind)
+	explicit pthread_mutex(int kind)
 	{
 		pthread_mutexattr_t attr;
 		pthread_mutexattr_init(&attr);
@@ -160,7 +160,7 @@ public:
 
 class pthread_rwlock {
 public:
-	pthread_rwlock(const pthread_rwlockattr_t *attr = NULL)
+	explicit pthread_rwlock(const pthread_rwlockattr_t *attr = NULL)
 	{
 		pthread_rwlock_init(&m_mutex, attr);
 	}
@@ -231,7 +231,7 @@ class pthread_scoped_lock {
 public:
 	pthread_scoped_lock() : m_mutex(NULL) { }
 
-	pthread_scoped_lock(pthread_mutex& mutex) : m_mutex(NULL)
+	explicit pthread_scoped_lock(pthread_mutex& mutex) : m_mutex(NULL)
 	{
 		mutex.lock();
 		m_mutex = &mutex;
@@ -276,7 +276,7 @@ class pthread_scoped_rdlock {
 public:
 	pthread_scoped_rdlock() : m_mutex(NULL) { }
 
-	pthread_scoped_rdlock(pthread_rwlock& mutex) : m_mutex(NULL)
+	explicit pthread_scoped_rdlock(pthread_rwlock& mutex) : m_mutex(NULL)
 	{
 		mutex.rdlock();
 		m_mutex = &mutex;
@@ -321,7 +321,7 @@ class pthread_scoped_wrlock {
 public:
 	pthread_scoped_wrlock() : m_mutex(NULL) { }
 
-	pthread_scoped_wrlock(pthread_rwlock& mutex) : m_mutex(NULL)
+	explicit pthread_scoped_wrlock(pthread_rwlock& mutex) : m_mutex(NULL)
 	{
 		mutex.wrlock();
 		m_mutex = &mutex;
@@ -364,7 +364,7 @@ private:
 
 class pthread_cond {
 public:
-	pthread_cond(const pthread_condattr_t *attr = NULL)
+	explicit pthread_cond(const pthread_condattr_t *attr = NULL)
 	{
 		pthread_cond_init(&m_cond, attr);
 	}

@@ -54,7 +54,7 @@ namespace mp {
 
 class stream_buffer {
 public:
-	stream_buffer(size_t initial_buffer_size = MP_STREAM_BUFFER_INITIAL_BUFFER_SIZE);
+	explicit stream_buffer(size_t initial_buffer_size = MP_STREAM_BUFFER_INITIAL_BUFFER_SIZE);
 	~stream_buffer();
 
 public:
@@ -72,7 +72,7 @@ public:
 	class ref {
 	public:
 		ref();
-		ref(const ref& o);
+		explicit ref(const ref& o);
 		~ref();
 		void clear();
 		void swap(ref& x);
