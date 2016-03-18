@@ -18,6 +18,8 @@
 #ifndef MP_MEMORY_H__
 #define MP_MEMORY_H__
 
+#include "jubatus/mp/config.h"
+
 #ifdef MP_MEMORY_BOOST
 #include <boost/tr1/memory>
 namespace mp {

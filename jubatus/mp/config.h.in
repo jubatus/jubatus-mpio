@@ -1,0 +1,6 @@
+#ifndef MP_CONFIG_H__
+#define MP_CONFIG_H__
+
+@mp_use_cpp11_standard@
+
+#endif

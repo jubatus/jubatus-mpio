@@ -18,6 +18,8 @@
 #ifndef MP_FUNCTIONAL_H__
 #define MP_FUNCTIONAL_H__
 
+#include "jubatus/mp/config.h"
+
 #ifdef MP_FUNCTIONAL_BOOST
 #include <boost/tr1/functional.hpp>
 namespace mp {

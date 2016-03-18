@@ -3,6 +3,7 @@
 libjubatus_mpio_includedir = $(includedir)/jubatus/mp
 
 libjubatus_mpio_include_HEADERS = \
+		config.h \
 		endian.h \
 		exception.h \
 		functional.h \
