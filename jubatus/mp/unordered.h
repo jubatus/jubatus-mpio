@@ -19,6 +19,8 @@
 #ifndef MP_UNORDERED_H__
 #define MP_UNORDERED_H__
 
+#include "jubatus/mp/config.h"
+
 #if   defined(MP_UNORDERED_MAP_BOOST)
 #include <boost/tr1/unordered_map.hpp>
 #include <boost/tr1/unordered_set.hpp>

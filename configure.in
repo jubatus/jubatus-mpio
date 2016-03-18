@@ -110,8 +110,19 @@ else
 fi
 AC_MSG_RESULT($enable_debug)
 
+AC_CONFIG_FILES([jubatus/mp/config.h])
+AC_LANG(C++)
+mp_cxxflags_backup="$CXXFLAGS"
+CXXFLAGS="$CXXFLAGS -std=c++11 -Wno-deprecated-declarations"
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM()],
+  mp_use_cpp11_standard="#define MP_FUNCTIONAL_STANDARD
+#define MP_MEMORY_STANDARD
+#define MP_UNORDERED_MAP_STANDARD"
+  AC_SUBST([mp_use_cpp11_standard]),
+  CXXFLAGS="$mp_cxxflags_backup"
+)
+
 AC_OUTPUT([Makefile
 		   jubatus/mp/Makefile
 		   mpsrc/Makefile
 		   test/Makefile])
-
